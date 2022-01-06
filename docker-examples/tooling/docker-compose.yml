@@ -1,0 +1,31 @@
+version: "4"
+services:
+  frontend:
+    build:
+      context: ../nodejs-app
+    ports:
+      - "4000:80"
+#    restart: always
+
+  database:
+    image: postgres:14-alpine
+    volumes:
+      - "./volumes/pg:/var/lib/postgresql/data"
+#    restart: always
+    env_file:
+      - ../rails-app/.env
+
+  backend:
+    build:
+      context: ../rails-app
+    ports:
+      - "3000:3000"
+    env_file:
+      - ../rails-app/.env
+#    restart: always
+    links:
+      - "database:pg"
+    depends_on:
+      - database
+
+
