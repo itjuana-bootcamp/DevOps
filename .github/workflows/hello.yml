@@ -47,6 +47,7 @@ jobs:
         with:
         # Artifact name
           name: my_first_file
+          path: ./test.yaml
 
 
       
