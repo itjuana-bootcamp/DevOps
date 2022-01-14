@@ -41,6 +41,11 @@ jobs:
         uses: actions/upload-artifact@v2.3.1
         with:
           path: ./test.yaml
+      - name: Download Build Artifact
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          name: test.yaml
+
 
       
 
