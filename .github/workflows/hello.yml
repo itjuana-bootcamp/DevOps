@@ -40,11 +40,12 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.3.1
         with:
+          name: my_first_file
           path: ./test.yaml
       - name: Download Build Artifact
         uses: actions/upload-artifact@v2.3.1
         with:
-          name: test.yaml
+          name: my_first_file
 
 
       
