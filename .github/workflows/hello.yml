@@ -34,7 +34,14 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          touch test.yaml
       - name: Setup Python
         uses: actions/setup-python@v2.3.1
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          path: ./test.yaml
+
+      
 
 
