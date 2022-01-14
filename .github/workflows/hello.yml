@@ -44,8 +44,6 @@ jobs:
           path: ./test.yaml
       - name: Download Build Artifact
         uses: actions/upload-artifact@v2.3.1
-        with:
-          name: my_first_file
 
 
       
