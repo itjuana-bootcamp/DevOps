@@ -7,17 +7,18 @@ on: push
 
 jobs:
     job1:
-        name: First job
-        runs-on: ubuntu-latest
-        steps:
-          - name: Step One
-            uses: actions/checkout@v2
-          - name: Step Two
-            run: |
-              touch test.txt
-              echo "my first touch" >> test.txt
-              cat test.txt
-              pwd
+     name: First job
+     runs-on: ubuntu-latest
+     steps:
+      - name: Step One
+        uses: actions/checkout@v2
+      - name: Step Two
+        run: |
+           touch test.txt
+           echo "my first touch" >> test.txt
+           cat test.txt
+           pwd
+
     job2:
       name: Second job
       runs-on: windows-latest
