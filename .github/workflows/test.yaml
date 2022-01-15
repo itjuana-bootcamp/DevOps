@@ -3,7 +3,7 @@ name: Bootcamp workflow
 on: push
 
 jobs:
-   job1:
+    job1:
        name: First job
        runs-on: ubuntu-latest
        steps:
