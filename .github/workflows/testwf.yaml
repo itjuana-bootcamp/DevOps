@@ -11,6 +11,27 @@ jobs:
         runs-on: ubuntu-latest
         steps:
           - name: Step One
-          uses: actions/checkout@v2
+            uses: actions/checkout@v2
           - name: Step Two
-          run: env | sort
+            run: env | sort
+
+    job2:
+      name: Second job
+      runs-on: windows-latest
+      steps:
+        - name: Step one
+          uses: actions/checkout@v2
+        - name: Step two
+          run: date
+
+    job3:
+      name: Third job
+      needs: [job1 ]
+      runs-on: macos-latest
+      steps:
+        - name: Step one
+          uses: actions/checkout #clone repo
+        - name: Step two
+          run: |
+            date
+            touch testwf.yaml
