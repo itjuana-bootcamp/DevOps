@@ -10,4 +10,26 @@ jobs:
        - name: Step One
          uses: actions/checkout@v2
        - name: Step two
-         run: env |sort
+         run: |
+           touch test.yaml
+           echo "My first file" >> test.yaml
+           cat test.yaml
+           pwd
+    job2:
+       name: Second job
+       runs-on: windows-latest
+       steps:
+       - name: Step One
+         uses: actions/checkout@v2
+       - name: Step two
+         run: date
+    job3:
+       needs: [job1]
+       runs-on: macos-latest
+       steps:
+       - name: Step1
+         uses: actions/checkout@v2  
+       - name: Step2
+         run: |
+           date
+           touch test.yaml
