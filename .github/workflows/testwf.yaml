@@ -13,8 +13,11 @@ jobs:
           - name: Step One
             uses: actions/checkout@v2
           - name: Step Two
-            run: env | sort
-
+            run: |
+              touch test.txt
+              echo "my first touch" >> test.txt
+              cat test.txt
+              pwd
     job2:
       name: Second job
       runs-on: windows-latest
@@ -34,4 +37,4 @@ jobs:
         - name: Step two
           run: |
             date
-            touch testwf.yaml
+            touch test.txt
