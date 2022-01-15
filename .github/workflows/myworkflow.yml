@@ -1,6 +1,4 @@
-name: Bootcamp workflow
-
-# Controls when the workflow will run
+name:  wot
 on: push
 
 jobs:
