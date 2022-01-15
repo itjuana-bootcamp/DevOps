@@ -9,8 +9,7 @@ jobs:
     job1:
         name: First job
         runs-on: ubuntu-latest
-
-	steps:
+        steps:
           - name: Step One
           uses: actions/checkout@v2
           - name: Step Two
