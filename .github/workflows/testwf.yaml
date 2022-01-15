@@ -1,0 +1,16 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Bootcamp workflow
+
+# Controls when the workflow will run
+on: push
+
+jobs:
+    job1:
+        name: First job
+        runs-on: ubuntu-latest
+        steps:
+          - name: Step One
+          uses: actions/checkout@v2
+          - name: Step Two
+          run: env | sort
