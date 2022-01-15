@@ -5,17 +5,17 @@ on: push
 
 jobs:
     job1:
-     name: First job
-     runs-on: ubuntu-latest
-     steps:
-      - name: Step One
-        uses: actions/checkout@v2
-      - name: Step Two
-        run: |
-           touch ${{ secrets.MYREPOSECRET }}.yaml
-           echo "my first touch" >>  ${{ secrets.MYREPOSECRET }}.yaml
-           cat ${{ secrets.MYREPOSECRET }}.yaml 
-           pwd
+      name: First job
+      runs-on: ubuntu-latest
+      steps:
+        - name: Step One
+          uses: actions/checkout@v2
+        - name: Step Two
+          run: |
+            touch ${{ secrets.MYREPOSECRET }}.yaml
+            echo "my first touch" >>  ${{ secrets.MYREPOSECRET }}.yaml
+            cat ${{ secrets.MYREPOSECRET }}.yaml 
+            pwd
 
     job2:
       name: Second job
