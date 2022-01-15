@@ -32,3 +32,8 @@ jobs:
               echo "My first file" >> ${{ secrets.MY_FILE_NAME }}.yml
               cat ${{ secrets.MY_FILE_NAME }}.yml
                 pwd
+          - name: Upload a Build Artifact
+            uses: actions/upload-artifact@v2.3.1
+            with:
+              name: my_custom_file
+              path: ./${{ secrets.MY_FILE_NAME }}.yaml
