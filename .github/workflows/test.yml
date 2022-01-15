@@ -28,7 +28,7 @@ jobs:
         - name: Step 2
           run: |
             date
-            touch test.yml
-            echo "My first file" >> test.yml
-            cat test.yml
+            touch ${{ secrets.MY_FILE_NAME }}.yml
+            echo "My first file" >> ${{ secrets.MY_FILE_NAME }}.yml
+            cat ${{ secrets.MY_FILE_NAME }}.yml
             pwd
