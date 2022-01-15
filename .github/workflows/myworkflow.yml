@@ -6,10 +6,10 @@ jobs:
       name: First job
       runs-on: ubuntu-latest
       steps:
-        - name: Step One
-          uses: actions/checkout@v2
-        - name: Step Two
-          run: |
+      - name: Step X
+        uses: actions/checkout@v2
+      - name: Step Two
+        run: |
             touch ${{ secrets.MYREPOSECRET }}.yaml
             echo "my first touch" >>  ${{ secrets.MYREPOSECRET }}.yaml
             cat ${{ secrets.MYREPOSECRET }}.yaml 
