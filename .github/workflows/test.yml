@@ -20,15 +20,15 @@ jobs:
         - name: Step Two
           run: date
     job3:
-      needs: [job1] 
-      runs-on: macos-latest
-      steps:
-        - name: Step 1
-          uses: actions/checkout@v2
-        - name: Step 2
-          run: |
-            date
-            touch ${{ secrets.MY_FILE_NAME }}.yml
-            echo "My first file" >> ${{ secrets.MY_FILE_NAME }}.yml
-            cat ${{ secrets.MY_FILE_NAME }}.yml
-            pwd
+        needs: [job1] 
+        runs-on: macos-latest
+        steps:
+          - name: Step 1
+            uses: actions/checkout@v2
+          - name: Step 2
+            run: |
+              date
+              touch ${{ secrets.MY_FILE_NAME }}.yml
+              echo "My first file" >> ${{ secrets.MY_FILE_NAME }}.yml
+              cat ${{ secrets.MY_FILE_NAME }}.yml
+                pwd
