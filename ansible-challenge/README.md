@@ -12,6 +12,8 @@
     - [Challenge 6: Using Ansible Roles](#challenge-6-using-ansible-roles)
   - [Extra Bonus](#extra-bonus)
   - [Refereces](#refereces)
+  - [Further Reading](#further-reading)
+
 # Ansible Challenge
 
 ## Objective
@@ -157,9 +159,14 @@ Refer [Ansible variables](https://docs.ansible.com/ansible/latest/user_guide/pla
 ## Extra Bonus
 
 * Update the ansible.cfg file in ansible_files/ansible.cfg and change the [strategy](https://docs.ansible.com/ansible/latest/user_guide/playbooks_strategies.html)
-* Store some sensitive data on [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html) and use it on the playbook
 
 ## Refereces
 
 * [Ansible Documentation](https://docs.ansible.com/ansible/latest/)
 * [Ansible Best Practices](https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html)
+
+## Further Reading
+
+* [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html)
+* [Ansible Collections](https://docs.ansible.com/ansible/latest/user_guide/collections_using.html)
+* [Ansible Tower](https://docs.ansible.com/ansible/2.5/reference_appendices/tower.html)
