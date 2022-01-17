@@ -16,7 +16,7 @@
 
 ## Objective
 
-By the end of this challenge, you will be able to install and use the Ansible configuration management to to administrate infrastructure.
+By the end of this challenge, you will be able to install and use the Ansible to to administrate infrastructure.
 ## Pre-requisites
 
 * [Docker](https://docs.docker.com/desktop/) installed
