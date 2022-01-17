@@ -1,0 +1,42 @@
+name: Bootcamp workflow
+
+on: workflow_dispatch
+
+jobs:
+    job1:
+        name: First job
+        runs-on: ubuntu-latest
+        steps:
+        - name: Step One
+          uses: actions/checkout@v2
+        - name: Step two
+          run: |
+            touch ${{ secrets.MY_FILE_NAME }}.yaml
+            echo "My first file" >> ${{ secrets.MY_FILE_NAME }}.yaml
+            cat ${{ secrets.MY_FILE_NAME }}.yaml
+            pwd
+    job2:
+        name: Second job
+        runs-on: windows-latest
+        steps:
+        - name: Step One
+          uses: actions/checkout@v2
+        - name: Step two
+          run: date
+    job3:
+        needs: [job1, job2]
+        runs-on: macos-latest
+        steps:
+        - name: Step 1
+          uses: actions/checkout@v2
+        - name: Step2
+          run: |
+            date
+            touch ${{ secrets.MY_FILE_NAME }}.yaml
+            pwd
+        - name: Upload a Build Artifact
+          uses: actions/upload-artifact@v2.3.1
+          with:
+            name: my_custom_file
+            path: ./${{ secrets.MY_FILE_NAME }}.yaml
+
