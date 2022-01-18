@@ -1,6 +1,6 @@
 FROM ruby:3.0.2-alpine
 
-RUN apk update; apk upgrade; apk add --no-cache --upgrade postgresql-client build-base postgresql-dev tzdata; rm -rf /var/cache/apk/*
+RUN apk update; apk upgrade; apk add --no-cache --upgrade vim postgresql-client build-base postgresql-dev tzdata; rm -rf /var/cache/apk/*
 
 WORKDIR /app
 

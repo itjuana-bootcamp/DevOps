@@ -1,24 +1,12 @@
-# README
+# rails app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## build docker image
+```bash
+docker build -t rails_app .
+```
 
-Things you may want to cover:
+## manually run database
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+docker run -e POSTGRES_PASSWORD=secure123 -e POSTGRES_USER=rails_user -e POSTGRES_DB=rails_app --name pg -d postgres
+```
