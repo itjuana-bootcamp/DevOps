@@ -1,4 +1,4 @@
-version: "4"
+version: "3"
 services:
   frontend:
     build:
@@ -24,7 +24,7 @@ services:
       - ../rails-app/.env
 #    restart: always
     links:
-      - "database:pg"
+      - "database:database"
     depends_on:
       - database
 
