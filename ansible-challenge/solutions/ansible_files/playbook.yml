@@ -41,12 +41,6 @@
         name: "{{ softwares }}"
         update_cache: yes
         state: present
-    
-- name: Install Apache2 only on ansible_target1 machine (using roles)
-  hosts: ansible_target1
-  become: yes
-  roles:
-    - apache2-install
 
 - name: Install Apache2 only on target2 group of machines (using roles)
   hosts: target2
