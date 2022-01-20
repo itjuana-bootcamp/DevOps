@@ -13,11 +13,11 @@ test('Feature 1 💀', () => {
 //   expect(linkElement).toBeInTheDocument();
 // });
 
-// test('Feature 3 👽', () => {
-//   render(<App />);
-//   const linkElement = screen.getByText(/Feature 3 👽/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
+ test('Feature 3 👽', () => {
+   render(<App />);
+   const linkElement = screen.getByText(/Feature 3 👽/i);
+   expect(linkElement).toBeInTheDocument();
+ });
 
 
 // test('Feature 4 🤖', () => {
