@@ -6,11 +6,14 @@ jobs:
   test:
     name: Run npm test
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./capstone_project/hello-world
     steps:
       - name: Step one
         uses: actions/checkout@v2
-      - name: Step two
-        run: cd capstone_project/hello-world
+     # - name: Step two
+       # run: cd capstone_project/hello-world
       - name: Step three
         run: npm test
   
@@ -18,10 +21,11 @@ jobs:
     needs: [test]
     name: Run docker build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./capstone_project/hello-world
     steps:
       - name: Step one
         uses: actions/checkout@v2
-      - name: Step two
-        run: cd capstone_project/hello-world
       - name: Step three
         run: docker build -t hello-world .
