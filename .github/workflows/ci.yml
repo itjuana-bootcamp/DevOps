@@ -15,7 +15,9 @@ jobs:
      # - name: Step two
        # run: cd capstone_project/hello-world
       - name: Step three
-        run: npm test
+        run: |
+          npm install
+          npm test
   
   containerize:
     needs: [test]
