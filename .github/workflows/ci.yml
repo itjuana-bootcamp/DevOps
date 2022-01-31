@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Step one
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: Step two
         run: cd capstone_project/hello-world
       - name: Step three
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Step one
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: Step two
         run: cd capstone_project/hello-world
       - name: Step three
