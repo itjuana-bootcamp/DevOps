@@ -9,10 +9,8 @@ jobs:
     steps:
       - name: Step one
       - uses: actions/checkout@v2
-
       - name: Step two
         run: cd capstone_project/hello-world
-      
       - name: Step three
         run: npm test
   
@@ -23,9 +21,7 @@ jobs:
     steps:
       - name: Step one
       - uses: actions/checkout@v2
-
       - name: Step two
         run: cd capstone_project/hello-world
-
       - name: Step three
         run: docker build -t hello-world .
