@@ -1,0 +1,29 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker buil . --file Dockerfile --tag my-image-name:$(date +%s)
+      
+    - name: Use retry accion
+      # Use the retry action
+      uses: nick-fields/retry@v2
+      with:
+        max_attempts: 3
+        retry_on: error
+        timeout_seconds: 5
+        # You can specify the shell commands you want to retry here
+        command: |
+            docker build . --file Dockerfile --tag my-image-name:$(date +%s)
