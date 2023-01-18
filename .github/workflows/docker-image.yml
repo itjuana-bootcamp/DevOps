@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Trying to open a folder
+    - name: Build the Docker image
       continue-on-error: true
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
       
