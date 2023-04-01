@@ -20,7 +20,18 @@ jobs:
                   pwd
                 
     mysecondjob:
+              needs: [FirstJob]
               name: SecondJob
               runs-on: macos-latest
+              steps:
+              - name: Step one
+                run: date
+                
+    mysthirdjob:
+              name: ThirdJob
+              runs-on: windows-latest
+              steps:
+              - name: Step one
+                run: date
                   
       
