@@ -11,12 +11,16 @@ jobs:
               runs-on: ubuntu-latest
               steps: 
               - name: step one
-              uses: actions/checkout@v3
+                uses: actions/checkout@v3
               - name: step two
-              run: |
-                touch newfile.yaml
-                echo "It's friday" >> newfile.yaml
-                cat newfile.yaml
-                pwd
+                run: |
+                  touch newfile.yaml
+                  echo "It's friday" >> newfile.yaml
+                  cat newfile.yaml
+                  pwd
+                
+    mysecondjob:
+              name: SecondJob
+              runs-on: macos-latest
                   
       
