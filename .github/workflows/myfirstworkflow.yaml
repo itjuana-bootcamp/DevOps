@@ -20,7 +20,7 @@ jobs:
                   pwd
                 
     mysecondjob:
-              needs: [myfirstjob]
+              #needs: [myfirstjob]
               name: SecondJob
               runs-on: macos-latest
               steps:
