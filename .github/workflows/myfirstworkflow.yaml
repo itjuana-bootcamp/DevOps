@@ -8,7 +8,7 @@ on:
 jobs:
     mifirstjob: 
               name: First job
-              runs_on: ubuntu_latest
+              runs-on: ubuntu_latest
               steps:
               - name: Step One
                 uses: actions/checkout@v3
