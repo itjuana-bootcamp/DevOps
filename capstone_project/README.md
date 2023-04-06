@@ -22,8 +22,8 @@ In this project, you will be using some of the tools and technologies you have l
 - Update the Node JS application content using Ansible
 
 ## Guidelines
-- Instruction for the project will be available on Wednesday,26th January
-- One week to deliver the project. Please deliver the project no later than Wednesday, 2nd February.
+- Instruction for the project will be available on Thursday, April 6th
+- One week to deliver the project. Please deliver the project no later than Monday, April 17.
 - Send the repo link or project to talent@itjuana.com
 - After delivering the trainers will review the content, if you pass you’ll get a badge recognizing your knowledge as DevOps Engineer.
 - You’ll know the results via email from the ITJ Talent Team.
