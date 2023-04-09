@@ -16,7 +16,7 @@ jobs:
 
                 - name: NPM dependencies 
                   working-directory: capstone_project/hello-world/
-                  run: npm install
+                  run: npm ci
                 - name: NPM testing 
                   working-directory: capstone_project/hello-world/
                   run: npm test
