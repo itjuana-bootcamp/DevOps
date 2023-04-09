@@ -8,27 +8,24 @@ on:
 
 jobs:
         npm-jobs:
-
+            #Npm actions will be executed as first job  
             runs-on: ubuntu-latest
-            strategy:
-              matrix:
-                node-version: [12]
+
             steps:
-            - uses: actions/checkout@v3
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v3
-              with:
-                node-version: ${{ matrix.node-version }}
-            - name: NPM dependencies 
-              working-directory: capstone_project/hello-world/
-              run: npm install
-            - name: NPM testing 
-              working-directory: capstone_project/hello-world/
-              run: npm test
+                - uses: actions/checkout@v2
+
+                - name: NPM dependencies
+                  working-directory: capstone_project/hello-world/
+                  run: npm install
+
+                - name: NPM testing 
+                  working-directory: capstone_project/hello-world/
+                  run: npm test
                   
         docker-jobs:
 
-            #needs: [npm-jobs]
+            #If the test above is  success, docker actions will be executed
+            needs: [npm-jobs]
             runs-on: ubuntu-latest
 
             steps:
