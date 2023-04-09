@@ -23,6 +23,7 @@ jobs:
                  
         docker-jobs:
 
+            needs: [npm-jobs]
             runs-on: ubuntu-latest
 
             steps:
