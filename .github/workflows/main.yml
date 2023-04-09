@@ -1,34 +1,33 @@
 name: Publish Docker image
 
-    on:
-        push:
+on:
+       push:
             branches: ['capstone']
-        pull_request:
+       pull_request:
             branches: ['capstone']
 
-    jobs:
+jobs:
         npm-jobs:
 
             runs-on: ubuntu-latest
 
             steps:
-                -uses: actions/checkout@v2
+                - uses: actions/checkout@v2
 
-                -name: NPM dependencies 
-                 working-directory: capstone_project/hello-world/
-                 run: npm install
-
-                -name: NPM testing 
-                 working-directory: capstone_project/hello-world/
-                 run: npm test
+                - name: NPM dependencies 
+                  working-directory: capstone_project/hello-world/
+                  run: npm install
+                - name: NPM testing 
+                  working-directory: capstone_project/hello-world/
+                  run: npm test
                  
         docker-jobs:
 
             runs-on: ubuntu-latest
 
             steps:
-                -uses: actions/checkout@v2
+                - uses: actions/checkout@v2
 
-                -name: Build container
-                 working-directory: capstone_project/hello-world/
-                 run: docker compose up -d
+                - name: Build container
+                  working-directory: capstone_project/hello-world/
+                  run: docker compose up -d
