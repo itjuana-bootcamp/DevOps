@@ -1,26 +1,34 @@
-name: Pipeline for capstone project
-on:
-  push:
-    branches:
-      - testworkflows
-  pull_request:
-      branches:
-      - testworkflows
-jobs:
-    firstjob:
-       name: Pipeline for capstone project
-       runs-on: ubuntu-latest
-       steps:
-        - uses: actions/checkout@v1
-        - name: Accediendo al proyecto 
-          run: cd capstone_project/hello-world/
-        - name: Instalando dependencias
-          working-directory: capstone_project/hello-world/
-          run: npm install
-        - name: Corriendo test
-          working-directory: capstone_project/hello-world/
-          run: npm test
-          if: ${{ success() }}
-        - name: Building the container
-          working-directory: capstone_project/hello-world/
-          run: docker compose up -d
+name: Publish Docker image
+
+    on:
+        push:
+            branches: ['capstone']
+        pull_request:
+            branches: ['capstone']
+
+    jobs:
+        npm-jobs:
+
+            runs-on: ubuntu-latest
+
+            steps:
+                -uses: actions/checkout@v2
+
+                -name: NPM dependencies 
+                 working-directory: capstone_project/hello-world/
+                 run: npm install
+
+                -name: NPM testing 
+                 working-directory: capstone_project/hello-world/
+                 run: npm test
+                 
+        docker-jobs:
+
+            runs-on: ubuntu-latest
+
+            steps:
+                -uses: actions/checkout@v2
+
+                -name: Build container
+                 working-directory: capstone_project/hello-world/
+                 run: docker compose up -d
