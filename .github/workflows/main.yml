@@ -13,13 +13,17 @@ jobs:
 
             steps:
                 - uses: actions/checkout@v2
-
-                - name: NPM dependencies 
-                  working-directory: capstone_project/hello-world/
-                  run: npm ci
-                - name: NPM testing 
-                  working-directory: capstone_project/hello-world/
-                  run: npm test
+                
+                - uses: actions/setup-node@v3
+                     with:
+                     node-version: 16
+                     cache: 'npm'
+                     cache-dependency-path: capstone_project/hello-world/package-lock.json
+                     
+                - run: npm install
+                     working-directory: capstone_project/hello-world/src
+                - run: npm test
+                     working-directory: capstone_project/hello-world/src
                  
         docker-jobs:
 
