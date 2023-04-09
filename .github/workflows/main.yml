@@ -10,16 +10,21 @@ jobs:
         npm-jobs:
 
             runs-on: ubuntu-latest
-
+            strategy:
+              matrix:
+                node-version: [16.13.1]
             steps:
-                - uses: actions/checkout@v2
-                
-                - name: NPM dependencies 
-                  working-directory: capstone_project/hello-world/
-                  run: npm install
-                - name: NPM testing 
-                  working-directory: capstone_project/hello-world/
-                  run: npm test
+            - uses: actions/checkout@v3
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                node-version: ${{ matrix.node-version }}
+            - name: NPM dependencies 
+              working-directory: capstone_project/hello-world/
+              run: npm install
+            - name: NPM testing 
+              working-directory: capstone_project/hello-world/
+              run: npm test
                   
         docker-jobs:
 
