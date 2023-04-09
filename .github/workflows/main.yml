@@ -1,0 +1,33 @@
+name: Publish Docker image
+
+on:
+  push:
+    branches: ['capstone']
+  pull_request:
+    branches: ['capstone']
+
+jobs:
+  build: 
+
+    runs-on: ubuntu-latest
+    
+    #citing actions / setup-node
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+        cache-dependency-path: capstone_project/hello-world/package-lock.json
+    - run: npm install
+    - run: npm test
+
+    #using docker build and push action
+    - name: Create Docker Image
+      uses: mr-smithers-excellent/docker-build-push@v4
+      with:
+        image: hello-dock/capstone-app
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
