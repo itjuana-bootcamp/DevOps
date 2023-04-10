@@ -1,0 +1,37 @@
+version: '3.3'
+
+services:
+    node_exporter:
+        networks:
+          - host
+          - bridge
+        pid: host
+        volumes:
+            - '/:/host:ro,rslave'
+        image: 'quay.io/prometheus/node-exporter:latest'
+        ports:
+            - '9100:9100' 
+    prometheus:
+        networks:
+          - host
+          - bridge
+        container_name: prometheus
+        ports:
+            - '9090:9090'
+        volumes:
+            - './prometheus.yaml:/etc/prometheus/prometheus.yml' 
+        image: prom/prometheus
+
+    grafana:
+        #network_mode: host
+        networks:
+          - host
+          - bridge
+        container_name: grafana
+        ports:
+            - '3000:3000'
+        image: grafana/grafana
+
+networks:
+  host:
+  bridge:
