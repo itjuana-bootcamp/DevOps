@@ -11,8 +11,8 @@ on:
                 runs-on: macos-latest
                 steps: 
                 - name: step one
-                uses: actions/checkout@v3
+                  uses: actions/checkout@v3
                 - name: step two
-                run: |
-                  npm test
-                  echo "Testing successful"
+                  run: |
+                    npm test
+                    echo "Testing successful"
