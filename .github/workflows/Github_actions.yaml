@@ -14,5 +14,6 @@ jobs:
                 uses: actions/checkout@v3
               - name: step two
                 run: |
+                  npm install
                   npm test
                   echo "Testing successful"
