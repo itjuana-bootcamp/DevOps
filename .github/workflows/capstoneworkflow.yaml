@@ -1,0 +1,14 @@
+name: Capstone Workflow
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+ 
+jobs:
+  capstonejjob:
+            name: Capstone Job
+            runs-on: ubuntu-latest
+            steps:
+            - name: Step One
+              uses: actions/checkout@v3
