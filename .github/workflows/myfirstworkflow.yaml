@@ -11,7 +11,7 @@ on:
                 runs-on: ubuntu-latest
                 steps: 
                 - name: step one
-                uses: actions/checkout@v3
+                  uses: actions/checkout@v3
                 - name: step two
                 run: |
                   touch newfile.yaml
