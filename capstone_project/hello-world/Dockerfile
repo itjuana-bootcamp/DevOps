@@ -1,7 +1,7 @@
-FROM node
+FROM node:16.13.1
 WORKDIR /hello-world
 COPY package*.json ./
 RUN npm install
 COPY . .
-CMD ["node","src/index.js"]
+CMD ["npm","start"]
 EXPOSE 3000
