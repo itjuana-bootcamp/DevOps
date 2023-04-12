@@ -1,0 +1,55 @@
+- name: My First Playbook
+  hosts: all
+  become: yes
+  vars_files:
+    - "vars/additional_vars"
+  tasks:
+    - name: Ping Check using ping module
+      ping:
+
+    - name: Create file using command module
+      command: sudo touch /home/ansible_controller/hello.txt
+
+    - name: Create file using file module
+      file: 
+        name: /home/ansible_controller/hello1.txt
+        state: touch
+
+    - name: Install apache2 using apt module
+      apt:
+        name: apache2
+        update_cache: yes
+        state: present  
+
+    - name: Install Packages using loop
+      apt:
+        name: "{{ item }}"
+        update_cache: yes
+        state: present
+      loop:
+        - jq
+        - apache2
+        - vim
+
+    - name: Create file using vars
+      vars:
+        filename: anotherhello
+      command: sudo touch /home/ansible_controller/{{ filename }}.txt
+
+    - name: Install Packages using vars files
+      apt:
+        name: "{{ softwares }}"
+        update_cache: yes
+        state: present
+
+- name: Install Apache2 only on ansible_target1 machine (using roles)
+  hosts: ansible_target1
+  become: yes
+  roles:
+    - apache2-install
+    
+- name: Install Apache2 only on target2 group of machines (using roles)
+  hosts: target2
+  become: yes
+  roles:
+    - apache2-install

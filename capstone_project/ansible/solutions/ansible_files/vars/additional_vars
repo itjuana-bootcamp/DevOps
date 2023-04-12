@@ -1,0 +1,4 @@
+softwares:
+    - jq
+    - vim
+    - apache2
