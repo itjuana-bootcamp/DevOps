@@ -24,6 +24,8 @@ jobs:
                      name: build dockerfile 
                      runs-on: macos-latest
                      steps:
+                     - name: build the environment
+                       uses: actions/checkout@v3
                      - name: build dockerfile
                        run: |
                          cd capstone_project/hello-world/
