@@ -37,5 +37,5 @@ jobs:
                        run: |
                          cd capstone_project/hello-world/
                          docker build -t capstone_p .
-                     - name: check container
-                       run: docker ps -a 
+                     - name: check image
+                       run: docker image ls 
