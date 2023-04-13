@@ -1,0 +1,25 @@
+name: Pipeline_OnPush
+run-name: ${{github.actor}} is pushing files
+on: 
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  check-versions:
+    os_matrix:
+      strategy:
+        matrix:
+          os: [ubuntu-latest, windows-latest]
+      runs-on: ${{matrix.os}}
+      steps:
+        - uses: actions/checkout@v3
+        - name: NodeJS Version
+          uses: actions/setup-node@v3
+          with:
+            node-version: '16.13.1'
+        - name: Installing Dependencies
+          run: npm install -g npm@latest
+          run: npm version
+        - name: Testing project
+          run: npm test
