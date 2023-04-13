@@ -26,9 +26,10 @@ jobs:
                      steps:
                      - name: build the environment
                        uses: actions/checkout@v3
-                     - name: build dockerfile
+                     - name: install docker
                        run: |
-                         cd capstone_project/hello-world/
-                         sudo apt-get install docker-ce
                          sudo apt-get update
-                         docker -v
+                         sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+                         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+                     - name: checking docker
+                       run: docker -v
