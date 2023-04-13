@@ -34,4 +34,6 @@ jobs:
                      - name: checking docker
                        run: docker -v
                      - name: build container
-                       run: docker build . --file Dockerfile --tag capstone_p:$(date +%s)
+                       run: |
+                         cd capstone_project/hello-world/
+                         docker build . --file Dockerfile --tag capstone_p:$(date +%s)
