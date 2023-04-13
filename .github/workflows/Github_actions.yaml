@@ -31,4 +31,4 @@ jobs:
                          cd capstone_project/hello-world/
                          sudo apt-get install docker
                          sudo apt-get update
-                         docker build . --file Dockerfile --tag capstone_p:$(date +%s)
+                         docker -v
