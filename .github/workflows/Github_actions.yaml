@@ -33,3 +33,5 @@ jobs:
                          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
                      - name: checking docker
                        run: docker -v
+                     - name: build container
+                       run: docker build . --file Dockerfile --tag capstone_p:$(date +%s)
