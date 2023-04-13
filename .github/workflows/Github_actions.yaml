@@ -22,11 +22,13 @@ jobs:
     build_dockerfile:
                      needs: [github_act]
                      name: build dockerfile 
-                     runs-on: macos-latest
+                     runs-on: ubuntu-latest
                      steps:
                      - name: build the environment
                        uses: actions/checkout@v3
                      - name: build dockerfile
                        run: |
                          cd capstone_project/hello-world/
+                         apt-get install docker
+                         apt-get update
                          docker build . --file Dockerfile --tag capstone_p:$(date +%s)
