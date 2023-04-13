@@ -2,11 +2,8 @@ name: Pipeline_OnPush
 run-name: ${{github.actor}} is pushing files
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    paths:
+      - './capstone-project/hello-world/**'
 jobs:
     Check-Versions:
                   name: Job for WSL Ubuntu
