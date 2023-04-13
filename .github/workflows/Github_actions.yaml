@@ -7,7 +7,7 @@ on:
 
 jobs:
     github_act:
-              name: firstaction
+              name: testing
               runs-on: macos-latest
               steps: 
               - name: step one
@@ -18,3 +18,13 @@ jobs:
                   npm install
                   npm test
                   echo "Testing successful"
+                  
+    build_dockerfile:
+                     needs: [github_act]
+                     name: build dockerfile 
+                     runs-on: macos-latest
+                     steps:
+                     - name: build dockerfile
+                       run: |
+                         cd capstone_project/hello-world/
+                         docker build -t capstone_p .
