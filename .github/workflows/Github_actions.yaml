@@ -29,6 +29,6 @@ jobs:
                      - name: build dockerfile
                        run: |
                          cd capstone_project/hello-world/
-                         sudo apt-get install docker
+                         sudo apt-get install docker-ce
                          sudo apt-get update
                          docker -v
