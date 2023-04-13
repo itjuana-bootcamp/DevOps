@@ -36,4 +36,4 @@ jobs:
                      - name: build container
                        run: |
                          cd capstone_project/hello-world/
-                         docker build . --file Dockerfile --tag capstone_p:$(date +%s)
+                         docker build -t capstone_p .
