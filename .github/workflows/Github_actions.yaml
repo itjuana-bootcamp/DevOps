@@ -29,6 +29,5 @@ jobs:
                      - name: build dockerfile
                        run: |
                          cd capstone_project/hello-world/
-                         apt-get install docker
-                         apt-get update
+                         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
                          docker build . --file Dockerfile --tag capstone_p:$(date +%s)
