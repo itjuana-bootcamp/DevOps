@@ -1,25 +1,38 @@
 name: Pipeline_OnPush
 run-name: ${{github.actor}} is pushing files
-on: 
+on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
 jobs:
-  check-versions:
-    os_matrix:
-      strategy:
-        matrix:
-          os: [ubuntu-latest, windows-latest]
-      runs-on: ${{matrix.os}}
-      steps:
-        - uses: actions/checkout@v3
-        - name: NodeJS Version
-          uses: actions/setup-node@v3
-          with:
-            node-version: '16.13.1'
-        - name: Installing Dependencies
-          run: npm install -g npm@latest
-          run: npm version
-        - name: Testing project
-          run: npm test
+    Check-Versions:
+                  name: Job for WSL Ubuntu
+                  runs-on: ubuntu-latest
+                  steps:
+                    - name: StepOne, Repository Check
+                      uses: actions/checkout@v3
+                    - name: StepTwo, NodeJS
+                      uses: actions/setup-node@v3
+                      with:
+                        node-version: 16.13.1
+                    - name: Installing Dependencies
+                      run: npm ci
+                    - name: Check Version of NPM
+                      run: npm version
+    WindowsVersions:
+                    name: Job for Windows
+                    runs-on: windows-latest
+                    steps:
+                      - name: StepOne, Repository Check
+                        uses: actions/checkout@v3
+                      - name: StepTwo, NodeJS
+                        uses: actions/setup-node@v3
+                        with:
+                          node-version: 16.13.1
+                      - name: Installing Dependencies
+                        run: npm install
+                      - name: Check Version of NPM
+                        run: npm version
