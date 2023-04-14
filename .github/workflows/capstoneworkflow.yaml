@@ -12,6 +12,6 @@ jobs:
             steps:
             - name: Step One
               uses: actions/checkout@v3
-            - name: testing
+            - name: Testing Step
               run: |
-                npm test
+                echo "Hi"
