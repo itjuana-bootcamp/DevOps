@@ -71,3 +71,42 @@ NOTE: From here on, whenever we say repository , that refers to your forked repo
 ## 4. Update "Hello World!" to "Hello DevOps!"
 - Update the node js application to display "Hello DevOps!" instead of "Hello World!" using ansible.
 
+
+
+## Capstone Resume 
+
+A\. Using ansible in your `local computer` to change message app.
+    I encountered some issues on MacOS when using the 'sudo docker compose up' command. It was a widespread error that I couldn't resolve, so I decided to leverage the power of Ansible to connect to the container from my local computer. But before that, I had to expose port 3000 and port 22:
+
+- ## Step 1 - Build the image of ubuntu in Dockerfile.
+
+```sh
+  docker build -t gusqroo .
+```
+- ## Step 2 - Create the container and expose port 22 & 3000.
+```sh
+  docker run -d -p 22:22 -p 3000:3000 gusqroo/app
+```
+ - ### Tip 1 - Make sure you have install `sshpass` on your local computer.
+
+B\. It has Ansible installed in my local computer can perform changes to the `app.js` file when the Docker container app is running. This allows you to update the app without having to rebuild the Docker image.
+
+ - ### Steap 3 - Go  `ansible_files` directory on terminal.
+
+ - ### 4 Steap 4 - The the ansible inventory.ini it will look like this: 
+    
+  ```[target1]
+  localhost ansible_user=react-container ansible_password=12345 ansible_port=22
+  ```
+ - ### 4 Steap 5 - The the ansible inventory.ini it will look like this:  
+
+```sh
+ansible-playbook -i inventory.ini playbook.yml
+```
+This will run the Ansible playbook and make changes to the `app.js` file in the `hello-world` service.
+
+**Gustavo Gómez** 
+
+[Email](mailto:gusqroo@gmail.com) 
+[GitHub](https://github.com/gusqroo) 
+[LinkedIn](https://www.linkedin.com/in/gusqroo/)
