@@ -24,7 +24,7 @@ RUN npm install
 COPY . .
 
 # Create the react-container user and configure sudo
-RUN useradd -rm -d cd /home/react-container -s /bin/bash -g root -G sudo -u 1001 react-container \
+RUN useradd -rm -d /home/react-container -s /bin/bash -g root -G sudo -u 1001 react-container \
     && echo react-container:12345 | chpasswd \
     && echo "react-container ALL=(ALL:ALL) NOPASSWD: ALL" | EDITOR="tee -a" visudo \
     && mkdir -p /home/react-container/.ssh
