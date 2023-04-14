@@ -10,12 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - users: actions/checkout@v2
+    - uses: actions/checkout@v2
     
     
     - name: Install and test Node
-      run: npm install
-      run: npm test
+      run: |
+        npm install
+        npm test
       
       
     - name: Build  Docker image
