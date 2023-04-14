@@ -9,17 +9,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Step One Check Rout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: capstone_project
+          working-directory: ./capstone_project/hello-world/
       - name: Step Two Dependencies
-        working-directory: /hello-world/
+        uses: actions/setup-node@v3
+        with:
+            node-version: 16.13.1
+            cache-dependency-path: ./capstone_project/hello-world/package.json
+      - name: Installing Dependencies
         run: npm install
-      - name: Step Three 
-        working-directory: /hello-world/
+      - name: Step Three Check Dependencies
+        working-directory: ./capstone_project/hello-world/
         run: npm test
       - name: Build and push Docker image
-        working-directory: /hello-world/
+        working-directory: ./capstone_project/hello-world/
         run: |
           docker build -t hello-world .
           docker push hello-world
