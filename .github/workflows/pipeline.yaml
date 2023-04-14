@@ -1,0 +1,23 @@
+name: pipeline
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+      
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - users: actions/checkout@v2
+    
+    
+    - name: Install and test Node
+      run: npm install
+      run: npm test
+      
+      
+    - name: Build  Docker image
+      if: ${{ succes() }}
+      run: docker build -t container /capstone_proyect/hello-world
