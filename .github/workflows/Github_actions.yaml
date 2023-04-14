@@ -10,9 +10,9 @@ jobs:
               name: testing
               runs-on: macos-latest
               steps: 
-              - name: step one
+              - name: test checkout
                 uses: actions/checkout@v3
-              - name: step two
+              - name: test app
                 run: |
                   cd capstone_project/hello-world/
                   npm install
@@ -21,21 +21,31 @@ jobs:
                   
     build_dockerfile:
                      needs: [github_act]
-                     name: build dockerfile 
+                     name: build docker image 
                      runs-on: ubuntu-latest
                      steps:
                      - name: build the environment
                        uses: actions/checkout@v3
-                     - name: install docker
+                     - name: install tools
                        run: |
                          sudo apt-get update
                          sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
                          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-                     - name: checking docker
+                     - name: checking docker installation
                        run: docker -v
-                     - name: build container
+                     - name: build image
                        run: |
                          cd capstone_project/hello-world/
                          docker build -t capstone_p .
-                     - name: check image
+                     - name: check docker image
                        run: docker image ls 
+                     - name: Login to Docker Hub
+                       uses: docker/login-action@v2
+                       with:
+                         username: ${{ secrets.osvaldoponce01 }}
+                         password: ${{ secrets.dckr_pat_kreM3r23MrTrNoYcoqj7Tp5ZTn4 }}
+                     - name: Push the image to DockerHub
+                       run: |
+                         docker tag osvaldoponce01/capstone_project:latest osvaldoponce01/capstone_project:0.0.1
+                         docker push osvaldoponce01/capstone_project:0.0.1
+                     
