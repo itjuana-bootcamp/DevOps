@@ -14,7 +14,9 @@ jobs:
     
     
     - name: Install and test Node
+        
       run: |
+        cd /capstone_project/hello-world
         npm install
         npm test
       
