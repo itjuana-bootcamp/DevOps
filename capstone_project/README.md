@@ -11,7 +11,7 @@
   - [2. Containerize the application](#2-containerize-the-application)
   - [3. Create a CI Pipeline](#3-create-a-ci-pipeline)
   - [4. Update "Hello World!" to "Hello DevOps!"](#4-update-hello-world-to-hello-devops)
-  - [5. Solution Capstone Project](#5-solution-capston-project)
+  - [5. Solution Capstone Project](#5-Solution)
 
 ## Description
 In this project, you will be using some of the tools and technologies you have learned during the bootcamp.
