@@ -72,9 +72,6 @@ NOTE: From here on, whenever we say repository , that refers to your forked repo
 ## 4. Update "Hello World!" to "Hello DevOps!"
 - Update the node js application to display "Hello DevOps!" instead of "Hello World!" using ansible.
 
-<<<<<<< HEAD
-
-
 ## Capstone Resume 
 
 A\. Using ansible in your `local computer` to change message app.
@@ -109,6 +106,4 @@ This will run the Ansible playbook and make changes to the `app.js` file in the 
 
 **Gustavo Gómez** 
 
-[Email](mailto:gusqroo@gmail.com) 
-[GitHub](https://github.com/gusqroo) 
-[LinkedIn](https://www.linkedin.com/in/gusqroo/)
+[Email](mailto:gusqroo@gmail.com) - [GitHub](https://github.com/gusqroo) - [LinkedIn](https://www.linkedin.com/in/gusqroo/)
