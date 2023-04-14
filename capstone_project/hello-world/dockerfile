@@ -1,0 +1,7 @@
+FROM node:alpine
+COPY . /hello-world
+WORKDIR /hello-world
+RUN npm install
+RUN npm test
+EXPOSE 3000
+CMD ["npm", "start"]
