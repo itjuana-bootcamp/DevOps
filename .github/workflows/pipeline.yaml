@@ -19,8 +19,10 @@ jobs:
         cd capstone_project/hello-world
         npm install
         npm test
-      
+        
       
     - name: Build  Docker image
       if: ${{ success() }}
-      run: docker build -t container /capstone_proyect/hello-world
+      run: |
+        cd capstone_project/hello-world
+        docker build -t container /capstone_proyect/hello-world
