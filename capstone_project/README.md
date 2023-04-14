@@ -112,9 +112,3 @@ This will run the Ansible playbook and make changes to the `app.js` file in the 
 [Email](mailto:gusqroo@gmail.com) 
 [GitHub](https://github.com/gusqroo) 
 [LinkedIn](https://www.linkedin.com/in/gusqroo/)
-=======
-## 5. Solution
-- Update the node js application to display "Hello DevOps!" instead of "Hello World!" using ansible. "Hello World!" to "Hello DevOps!"
-- Update the node js application to display "Hello DevOps!" instead of "Hello World!" using ansible.
-
->>>>>>> da7c78266a48555ca403752116dca7a3b805b34b
