@@ -13,13 +13,13 @@ jobs:
         with:
           path: capstone_project
       - name: Step Two Dependencies
-        working-directory: ./capstone_project/hello-world/
+        working-directory: /hello-world/
         run: npm install
       - name: Step Three 
-        working-directory: ./capstone_project/hello-world/
+        working-directory: /hello-world/
         run: npm test
       - name: Build and push Docker image
-        working-directory: ./capstone_project/hello-world/
+        working-directory: /hello-world/
         run: |
           docker build -t hello-world .
           docker push hello-world
