@@ -16,6 +16,7 @@ jobs:
               run: |
                 cd capstone_project
                 cd hello-world
+                npm install
                 npm test
                 
   buildjob:
