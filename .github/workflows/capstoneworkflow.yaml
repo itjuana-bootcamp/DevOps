@@ -6,12 +6,24 @@ on:
   workflow_dispatch:
  
 jobs:
-  capstonejjob:
-            name: Capstone Job
+  testjob:
+            name: Test Job
             runs-on: ubuntu-latest
             steps:
             - name: Step One
               uses: actions/checkout@v3
             - name: Testing Step
               run: |
-                echo "Hi"
+                echo "npm test"
+                
+  buildjob:
+            needs: [testjob]
+            name: Build Job
+            runs-on: ubuntu-latest
+            steps:
+            - name: Step One
+              uses: actions/checkout@v3
+            - name: Testing Step
+              run: |
+                echo "build"
+  
