@@ -1,33 +1,42 @@
-name: CI Papline
+name: CI Papeline
 
 on:
   push:
   pull_request:
   
 jobs:
-  jobimage:
+  BuildingUbuntuImage:
     runs-on: ubuntu-latest
+    defaults:
+        run:
+          working-directory: ./capstone_project/hello-world/
     steps:
-      - name: Step One Check Rout
+      - name: Step One - Check Repo
         uses: actions/checkout@v3
         with:
-          path: capstone_project
-          working-directory: ./capstone_project/hello-world/
-      - name: Step Two Dependencies
-        uses: actions/setup-node@v3
-        with:
-            node-version: 16.13.1
-            cache-dependency-path: ./capstone_project/hello-world/package.json
-      - name: Installing Dependencies
+          node-version: 16.13.1
+          cache-dependency-path: ./capstone_project/hello-world/package.json
+      - name: Step Two - Installing Dependencies
         run: npm install
-      - name: Step Three Check Dependencies
-        working-directory: ./capstone_project/hello-world/
+      - name: Step Three - Check Dependencies
         run: npm test
-      - name: Build and push Docker image
-        working-directory: ./capstone_project/hello-world/
-        run: |
-          docker build -t hello-world .
-          docker push hello-world
-      
+  Deploying_Container:
+        name: Making Image
+        runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: ./capstone_project/hello-world/
+            shell: bash
+        needs: BuildingUbuntuImage
+        steps:
+        - uses: actions/checkout@v3
+        - name: Step One:Making Docker Image
+          run: docker build -t node-helloworld-image .
+        - name: SetpTwo:Checking Image
+          run: docker images
+        - name: Step Three:Making Container
+          run: docker run -d -p 3000:3000 node-helloworld-image
+        - name: Running container
+          run: docker ps
   
   
