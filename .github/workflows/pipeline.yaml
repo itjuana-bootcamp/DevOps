@@ -20,5 +20,5 @@ jobs:
       
       
     - name: Build  Docker image
-      if: ${{ succes() }}
+      if: ${{ success() }}
       run: docker build -t container /capstone_proyect/hello-world
