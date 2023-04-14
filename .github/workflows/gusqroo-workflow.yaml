@@ -36,4 +36,4 @@ jobs:
       with:
         context: ./capstone_project/hello-world
         push: true
-        tags: react-app-gusqroo:latest
+        tags: gusqroo/app:latest
