@@ -1,0 +1,10 @@
+---
+- hosts: container1
+  tasks:
+  - name: Ping to verify connection
+    ansible.builtin.ping:
+  - name: Ansible replace string example
+    replace:
+      path: ./src/App.js
+      regexp: 'World'
+      replace: "Devops"
