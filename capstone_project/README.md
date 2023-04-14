@@ -11,6 +11,7 @@
   - [2. Containerize the application](#2-containerize-the-application)
   - [3. Create a CI Pipeline](#3-create-a-ci-pipeline)
   - [4. Update "Hello World!" to "Hello DevOps!"](#4-update-hello-world-to-hello-devops)
+  - [5. Solution Capstone Project](#5-Solution)
 
 ## Description
 In this project, you will be using some of the tools and technologies you have learned during the bootcamp.
@@ -71,6 +72,7 @@ NOTE: From here on, whenever we say repository , that refers to your forked repo
 ## 4. Update "Hello World!" to "Hello DevOps!"
 - Update the node js application to display "Hello DevOps!" instead of "Hello World!" using ansible.
 
+<<<<<<< HEAD
 
 
 ## Capstone Resume 
@@ -110,3 +112,9 @@ This will run the Ansible playbook and make changes to the `app.js` file in the 
 [Email](mailto:gusqroo@gmail.com) 
 [GitHub](https://github.com/gusqroo) 
 [LinkedIn](https://www.linkedin.com/in/gusqroo/)
+=======
+## 5. Solution
+- Update the node js application to display "Hello DevOps!" instead of "Hello World!" using ansible. "Hello World!" to "Hello DevOps!"
+- Update the node js application to display "Hello DevOps!" instead of "Hello World!" using ansible.
+
+>>>>>>> da7c78266a48555ca403752116dca7a3b805b34b
