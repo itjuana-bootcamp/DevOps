@@ -25,4 +25,4 @@ jobs:
       if: ${{ success() }}
       run: |
         cd capstone_project/hello-world
-        docker build -t container /capstone_proyect/hello-world
+        docker build -t container /capstone_proyect/hello-world .
