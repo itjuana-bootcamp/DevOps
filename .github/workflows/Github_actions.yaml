@@ -47,5 +47,7 @@ jobs:
                      - name: Push the image to DockerHub
                        run: |
                          docker tag capstone_p osvaldoponce01/capstone_project:0.0.1
+                         docker image ls
                          docker push osvaldoponce01/capstone_project:0.0.1
+                         
                      
