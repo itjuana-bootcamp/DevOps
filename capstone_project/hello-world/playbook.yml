@@ -1,8 +1,8 @@
 - name: Modify message
   hosts: all
-    #using lineinfile module we will replace the message
+  #Using lineinfile module we will replace the message
   tasks:
-    - name: Search inside App file
+    - name: Ansible play to search inside App file and replace message
       ansible.builtin.lineinfile:
         path: src/App.js
         search_string: 'Hello World'
