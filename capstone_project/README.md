@@ -74,7 +74,7 @@ Conclussions
 
 In general, this Bootcamp was very challenging, not only due to its level of complexity, but also because it was a real challenge to learn technologies that are part of everyday life and highly in demand in the job market, all within just 10 days and with the pressure of the deadline. It was very exciting to learn from the tutors of the Bootcamp who were always there to help us with any questions during the classes.  This has been one of the best Bootcamps I have ever taken, and it was also my first one in English!
 
-Thank You to ITijuana.
+Thank You ITijuana.
 
 Regards!
 
