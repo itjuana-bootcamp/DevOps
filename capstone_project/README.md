@@ -1,109 +1,83 @@
 # DevOps Bootcamp Capstone Project
-- [DevOps Bootcamp Capstone Project](#devops-bootcamp-capstone-project)
-  - [Description](#description)
-  - [Features and Requirements](#features-and-requirements)
-  - [Guidelines](#guidelines)
-  - [Resources](#resources)
-  - [Pre-requisites](#pre-requisites)
-  - [1. Setup your development environment](#1-setup-your-development-environment)
-    - [Repository](#repository)
-    - [Application](#application)
-  - [2. Containerize the application](#2-containerize-the-application)
-  - [3. Create a CI Pipeline](#3-create-a-ci-pipeline)
-  - [4. Update "Hello World!" to "Hello DevOps!"](#4-update-hello-world-to-hello-devops)
-  - [5. Solution Capstone Project](#5-Solution)
-
-## Description
-In this project, you will be using some of the tools and technologies you have learned during the bootcamp.
-
-## Features and Requirements
-- Node Js application will be provided
-- Containerization using docker
-- CI pipeline using Github Actions (Including automated testing,build)
-- Update the Node JS application content using Ansible
-
-## Guidelines
-- Instruction for the project will be available on Thursday, April 6th
-- One week to deliver the project. Please deliver the project no later than Monday, April 17.
-- Send the repo link or project to talent@itjuana.com
-- After delivering the trainers will review the content, if you pass you’ll get a badge recognizing your knowledge as DevOps Engineer.
-- You’ll know the results via email from the ITJ Talent Team.
-- Any questions or comments, please post it in the [WhatsApp group](https://chat.whatsapp.com/KiirrKYAJ3SINrDn1pLZ7C)
-
-## Resources
-[Bootcamp Presentations](https://github.com/itjuana-bootcamp/DevOps/tree/main/Presentations)
-
-## Pre-requisites
-
-* [Docker](https://docs.docker.com/desktop/) installed
-  * `docker --version` should show the docker version
-* [Git](https://github.com/git-guides/install-git) installed
-  * `git --version` should show the git version
-* [Node JS](https://nodejs.org/en/download/package-manager/)
-  * `npm version` should show the node version
-* Have a [github account](https://github.com/join)
-* Code editor of your preference - [VS Code](https://code.visualstudio.com/download) recommended
-
-## 1. Setup your development environment
-
-### Repository
-- Go to the github repository https://github.com/itjuana-bootcamp/DevOps
-- Fork the repository
-NOTE: From here on, whenever we say repository , that refers to your forked repository.
-- Clone the repository : `git clone git@github.com:<githubaccount>/DevOps.git`
-
-### Application
-- Go to folder `hello-world`
-- Run `npm install` .
-- Run `npm test` . All tests need to pass.
-- Run `npm start` to run the application.
-- Check http://localhost:3000 is reachable and displaying "Hello World!"
-
-## 2. Containerize the application
-- Using docker, containerize the application.
-- Build the container and run it to make the application available on http://localhost:3000
-
-## 3. Create a CI Pipeline 
-- Create a CI pipeline which 
-     - will trigger on push and on pull request
-     - Run the tests
-     - Only if tests are success, build the container
-
-## 4. Update "Hello World!" to "Hello DevOps!"
-- Update the node js application to display "Hello DevOps!" instead of "Hello World!" using ansible.
 
 ## Capstone Resume 
 
-A\. Using ansible in your `local computer` to change message app.
-    I encountered some issues on MacOS when using the 'sudo docker compose up' command. It was a widespread error that I couldn't resolve, so I decided to leverage the power of Ansible to connect to the container from my local computer. But before that, I had to expose port 3000 and port 22:
+ Using ansible in your `local computer` to change message app.
+ I encountered some issues on MacOS when using the 'sudo docker compose up' command. It was a widespread error that I couldn't resolve, so I decided to leverage the power of Ansible to connect to the container from my local computer. But before that, I had to expose port 3000 and port 22 for make work this solution.
 
-- ## Step 1 - Build the image of ubuntu in Dockerfile.
+#### Step 1 - Build the image of ubuntu in Dockerfile inside Folder hello_world
 
 ```sh
   docker build -t gusqroo .
 ```
-- ## Step 2 - Create the container and expose port 22 & 3000.
+#### Step 2 - Create the container and expose port 22 & 3000.
 ```sh
   docker run -d -p 22:22 -p 3000:3000 gusqroo/app
 ```
- - ### Tip 1 - Make sure you have install `sshpass` on your local computer.
-
-B\. It has Ansible installed in my local computer can perform changes to the `app.js` file when the Docker container app is running. This allows you to update the app without having to rebuild the Docker image.
-
- - ### Steap 3 - Go  `ansible_files` directory on terminal.
-
- - ### 4 Steap 4 - The the ansible inventory.ini it will look like this: 
-    
+ - ### Tip 1 - Make sure you have install `sshpass` on your local computer. This Steap is necesary for run ansible-playbook command. In my case, i had to install vía **MacPorts** with the command:
+ ```sh
+sudo port install sshpass
+```
+#### Steap 3 - Go to  `ansible_files` directory on terminal, and open inventory.ini and add the ansible_port=22, like this:    
   ```[target1]
   localhost ansible_user=react-container ansible_password=12345 ansible_port=22
   ```
- - ### 4 Steap 5 - The the ansible inventory.ini it will look like this:  
+#### Steap 4 - Run comand for make changes in the app react on local machine:  
 
 ```sh
 ansible-playbook -i inventory.ini playbook.yml
 ```
-This will run the Ansible playbook and make changes to the `app.js` file in the `hello-world` service.
+This will run the ansible playbook and make changes the message on `app.js` file in the `container` on execution time.
+
+![Message Changed](https://i.ibb.co/JQMqHVY/Captura-de-Pantalla-2023-04-13-a-la-s-19-11-33.png)
+
+##### Another way to make the change is through a controller ansible in a container to the hello-world container, which can be done using the follow command in local:
+**Steap 1
+- Go to the folder capstone_project and run this command for build the `docker-composer.yml` this file contains instructions for creating two containers: hello-app and ansible_controller. Execute:
+```sh
+sudo docker compose up
+```
+**Steap 2
+- Expose two ports 3000 y 22:
+```sh
+docker run -d -p 22:22 -p 3000:3000 hello-world
+```
+**Steap 3
+- Enter to the controller container using the following command:
+```sh
+docker exec -w /home/ansible_controller/ansible_files/ -ti ansible_controller bash
+```
+**Steap 4
+- Execute the Ansible command to change the message from "Hello World" to "Hello DevOps".
+```sh
+ansible-playbook -i inventory.ini playbook.yml
+```
+***All the configurations files for Ansible are located on this folder: 
+[ansible_files](https://github.com/gusqroo/DevOps/tree/gusqroo/capstone_project/ansible/ansible_files)
+
+## CI Pipeline with Github Actions.
+
+All tests pass successfully. For more detail you can go to [gusqroo-workflow.yaml](https://github.com/gusqroo/DevOps/blob/gusqroo/.github/workflows/gusqroo-workflow.yaml "gusqroo-workflow.yaml")
+
+![Pipeline CI/CD Successfully](https://i.ibb.co/9NfrzgK/Test-Deploy.png)
+
+To carry out the deployment tests of the container to Docker Hub, 2 secrets had to be configured: DOCKERHUB_USERNAME and DOCKERHUB_ACCESS_TOKEN. 
+The workflow deploys to Docker Hub and creates the image in our repository.
+The image [Docker Hub]([gusqroo/app general | Docker Hub](https://hub.docker.com/repository/docker/gusqroo/app/general)) created for the workflow, you can pull the container with the command: 
+```sh
+docker push gusqroo/app:tagname
+```
+
+And thats all!
+
+Conclussions
+
+In general, this Bootcamp was very challenging, not only due to its level of complexity, but also because it was a real challenge to learn technologies that are part of everyday life and highly in demand in the job market, all within just 10 days and with the pressure of the deadline. It was very exciting to learn from the tutors of the Bootcamp who were always there to help us with any questions during the classes.  This has been one of the best Bootcamps I have ever taken, and it was also my first one in English!
+
+Thank You to ITijuana.
+
+Regards!
 
 **Gustavo Gómez** 
 
-[Email](mailto:gusqroo@gmail.com) - [GitHub](https://github.com/gusqroo) - [LinkedIn](https://www.linkedin.com/in/gusqroo/)
+[LinkedIn](https://www.linkedin.com/in/gusqroo/)- [Email](mailto:gusqroo@gmail.com) - [GitHub](https://github.com/gusqroo) 
