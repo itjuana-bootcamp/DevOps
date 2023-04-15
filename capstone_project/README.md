@@ -14,7 +14,7 @@
 ```sh
   docker run -d -p 22:22 -p 3000:3000 gusqroo/app
 ```
- - ### Tip 1 - Make sure you have install `sshpass` on your local computer. This Steap is necesary for run ansible-playbook command. In my case, i had to install vía **MacPorts** with the command:
+ - ### NOTE: - Make sure you have install `sshpass` on your local computer. This Steap is necesary for run ansible-playbook command. In my case, i had to install vía **MacPorts** with the command:
  ```sh
 sudo port install sshpass
 ```
@@ -70,11 +70,11 @@ docker push gusqroo/app:tagname
 
 And thats all!
 
-Conclussions
+## Conclussions 💡
 
 In general, this Bootcamp was very challenging, not only due to its level of complexity, but also because it was a real challenge to learn technologies that are part of everyday life and highly in demand in the job market, all within just 10 days and with the pressure of the deadline. It was very exciting to learn from the tutors of the Bootcamp who were always there to help us with any questions during the classes.  This has been one of the best Bootcamps I have ever taken, and it was also my first one in English!
 
-Thank You ITijuana.
+Thank You ITijuana.🤘
 
 Regards!
 
