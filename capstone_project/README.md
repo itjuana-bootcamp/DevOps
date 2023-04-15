@@ -31,7 +31,7 @@ This will run the ansible playbook and make changes the message on `app.js` file
 
 ![Message Changed](https://i.ibb.co/JQMqHVY/Captura-de-Pantalla-2023-04-13-a-la-s-19-11-33.png)
 
-##### Another way to make the change is through a controller ansible in a container to the hello-world container, which can be done using the follow command in local:
+#### Another way to make the change is through a controller ansible in a container to the hello-world container, which can be done using the follow command in local:
 **Steap 1
 - Go to the folder capstone_project and run this command for build the `docker-composer.yml` this file contains instructions for creating two containers: hello-app and ansible_controller. Execute:
 ```sh
