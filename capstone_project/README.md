@@ -1,8 +1,8 @@
 # DevOps Bootcamp Capstone Project
 
-## Capstone Resume 
+## Capstone Project Resume 
 
- Using ansible in your `local computer` to change message app.
+### Using ansible in your `local computer` to change message app.
  I encountered some issues on MacOS when using the 'sudo docker compose up' command. It was a widespread error that I couldn't resolve, so I decided to leverage the power of Ansible to connect to the container from my local computer. But before that, I had to expose port 3000 and port 22 for make work this solution.
 
 #### Step 1 - Build the image of ubuntu in Dockerfile inside Folder hello_world
