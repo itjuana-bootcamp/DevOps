@@ -1,0 +1,9 @@
+- name: Modify message
+  hosts: all
+
+  tasks:
+    - name: Search inside App file
+      ansible.builtin.lineinfile:
+        path: src/App.js
+        search_string: 'Hello World'
+        line: Hello DevOps
