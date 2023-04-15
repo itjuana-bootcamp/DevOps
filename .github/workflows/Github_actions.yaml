@@ -40,7 +40,7 @@ jobs:
                      - name: check docker image
                        run: docker image ls 
                      - name: Login to Docker Hub
-                       run: echo "${{ secrets.dckr_pat_ZXvaURZZido6jIOevjph6Upu5zM }}" | docker login docker.pkg.github.com -u ${{ secrets.osvaldoponce01 }} --password-stdin
+                       run: docker login -u ${{ secrets.osvaldoponce01 }} -p e${{ secrets.dckr_pat_ZXvaURZZido6jIOevjph6Upu5zM }}
                      - name: Push the image to DockerHub
                        run: |
                          docker tag osvaldoponce01/capstone_project:latest osvaldoponce01/capstone_project:0.0.1
