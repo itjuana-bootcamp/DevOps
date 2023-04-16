@@ -19,7 +19,7 @@ jobs:
         npm install
     - name: Run Test
       run: |
-        cd capstone_project/hello-worl
+        cd capstone_project/hello-world
         npm test
         
   ContainerJob:
