@@ -19,7 +19,7 @@ jobs:
         npm install
         
   TestJob:
-    needs: [Install]
+    needs: [InstallJob]
     name: Test Job
     runs-on: ubuntu-latest
     steps:
