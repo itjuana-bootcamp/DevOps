@@ -1,0 +1,23 @@
+name: Hello DevOps Workflow
+
+on:
+  push:
+    branches: [hello-devops-workflow]
+  pull_request:
+    branches: [hello-devops-workflow]
+  
+jobs:
+  TestJob:
+    name: Test Job
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run Checkout
+      uses: actions/checkout@v3
+    - name: Run Install
+      run: |
+        cd capstone_project/hello-world
+        npm install
+    - name: Run Test
+      run: |
+        cd capstone_project/hello-world
+        npm test
