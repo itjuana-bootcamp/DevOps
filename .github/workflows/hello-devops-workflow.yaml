@@ -1,0 +1,19 @@
+name: Hello DevOps Workflow
+
+on:
+  push:
+    branches: [hello-devops-workflow]
+  pull_request:
+    branches: [hello-devops-workflow]
+  
+jobs:
+  myfirstjob:
+    name: First Job
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run Install
+      run: |
+        cd hello-world
+        npm install
+     
+    
