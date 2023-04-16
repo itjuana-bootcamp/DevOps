@@ -1,0 +1,18 @@
+---
+- name: Ansible update for all host
+  hosts: all
+  become: true
+  tasks:
+    - name: Ping test to verify connectivity
+      ping:
+
+    - name: Update Hello World! to Hello DevOps!
+      lineinfile:
+        path: /home/ansible_controller/src/App.js
+        regexp: '^\s*Hello World!\s*$'
+        line: 'Hello DevOps!'
+      register: lineinfile_result
+
+    - name: Print lineinfile output
+      debug:
+        var: lineinfile_result

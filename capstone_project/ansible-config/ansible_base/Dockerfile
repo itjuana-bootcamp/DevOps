@@ -1,8 +1,5 @@
-#Autor: LAH
-#Version 1.0
-
 # Set the base image
-FROM node:16.13.1
+FROM ubuntu
 
 #Install ssh stuff
 RUN apt-get update  -y \
@@ -13,21 +10,15 @@ RUN apt-get update  -y \
     sudo \
     software-properties-common
 
+#Install ansible
+RUN add-apt-repository --yes --update ppa:ansible/ansible \
+    && apt-get install -y ansible
+
 #Creates and set the working directory
 WORKDIR /home/ansible_controller
 
 #Copy ssh script
 COPY startup.sh .
-
-# Copy the package.json and package-lock.json files to the container
-COPY package*.json ./
-
-# Copy the project files to the container
-COPY ./public ./public
-COPY ./src ./src
-
-#Install dependencies
-RUN npm install
 
 #Set user and password
 RUN useradd -rm -d /home/ansible_controller -s /bin/bash -g root -G sudo -u 1001 ansible_controller
@@ -39,5 +30,5 @@ RUN echo "ansible_controller ALL=(ALL:ALL) NOPASSWD: ALL" |  EDITOR="tee -a"  vi
 #Creates .ssh dir
 RUN mkdir -p /home/ansible_controller/.ssh
 
-#Runs ssh script and starts the hello-world app
+#Runs ssh script
 CMD ["/bin/bash", "/home/ansible_controller/startup.sh"]
