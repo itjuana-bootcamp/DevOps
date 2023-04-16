@@ -13,6 +13,7 @@ jobs:
     steps:
     - name: Run Install
       run: |
-        ls -l
+        cd capstone_project
+        pwd
      
     
