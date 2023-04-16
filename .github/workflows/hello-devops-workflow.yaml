@@ -11,9 +11,10 @@ jobs:
     name: First Job
     runs-on: ubuntu-latest
     steps:
+    - name: Run Checkout
+      uses: actions/checkout@v3
     - name: Run Install
       run: |
-        cd capstone_project
-        pwd
+      cd capstone_project/hello-world
      
     
