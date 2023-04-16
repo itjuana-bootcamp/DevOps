@@ -13,7 +13,6 @@ jobs:
     steps:
     - name: Run Install
       run: |
-        cd capstone_project/hello-world
-        npm install
+        pwd
      
     
