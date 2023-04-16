@@ -7,8 +7,8 @@ on:
     branches: [hello-devops-workflow]
   
 jobs:
-  InstallJob:
-    name: Install Job
+  TestJob:
+    name: Test Job
     runs-on: ubuntu-latest
     steps:
     - name: Run Checkout
@@ -17,13 +17,5 @@ jobs:
       run: |
         cd capstone_project/hello-world
         npm install
-        
-  TestJob:
-    needs: [InstallJob]
-    name: Test Job
-    runs-on: ubuntu-latest
-    steps:
     - name: Run Test
-      run: npm test 
-     
-    
+      run: npm test
