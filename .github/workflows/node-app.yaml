@@ -6,7 +6,7 @@ on:
       - test-best-practices
 
 jobs:
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +28,7 @@ jobs:
         working-directory: my-express-app
 
   deploy:
-    needs: build
+    needs: build_and_test
     runs-on: ubuntu-latest
 
     steps:
