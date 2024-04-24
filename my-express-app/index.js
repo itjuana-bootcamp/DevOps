@@ -8,10 +8,6 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
-if (require.main === module) {
-  app.listen(port, () => {
-    console.log(`Server is listening at http://localhost:${port}`);
-  });
-}
-
-module.exports = app; // Export the app object
+app.listen(port, () => {
+  console.log(`Server is listening at http://localhost:${port}`);
+});
