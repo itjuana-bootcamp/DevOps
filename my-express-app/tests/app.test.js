@@ -8,8 +8,3 @@ describe('GET /', () => {
     expect(response.text).toBe('Hello, World!');
   });
 });
-
-// Clean up the Jest cache after each test
-afterEach(() => {
-    jest.resetModules();
-  });
