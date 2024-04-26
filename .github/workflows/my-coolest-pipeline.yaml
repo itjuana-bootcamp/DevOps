@@ -27,3 +27,18 @@ jobs:
               run: |
                 npm test
               working-directory: my-express-app
+    
+    deploy_app:
+        needs: build_test_node_app
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+            
+            - name: Deploy to Heroku
+              uses: akhileshns/heroku-deploy@v3.13.15 # This is the action
+              with:
+                heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+                heroku_app_name: "gh-node-app" #Must be unique in Heroku
+                heroku_email: ${{vars.HEROKU_USERNAME}}
+                appdir: "my-express-app"
