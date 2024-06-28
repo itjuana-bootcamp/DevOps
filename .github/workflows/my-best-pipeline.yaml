@@ -29,7 +29,7 @@ jobs:
               working-directory: my-express-app
     
     deploy_node_app:
-        needs: build_test_node_app
+        needs: [build_test_node_app]
         runs-on: ubuntu-latest
 
         steps:
