@@ -1,4 +1,4 @@
-name: The Best Pipeline
+name: PR_WF
 
 on:
  pull_request:
