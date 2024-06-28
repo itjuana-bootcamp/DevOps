@@ -3,7 +3,7 @@ name: The Best Pipeline
 on:
  pull_request:
   branches:
-    - test-best-practices
+    - main
 
 jobs:
     test_node_app:
