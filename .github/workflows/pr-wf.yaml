@@ -1,0 +1,29 @@
+name: The Best Pipeline
+
+on:
+ pull_request:
+  branches:
+    - test-best-practices
+
+jobs:
+    test_node_app:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - uses: actions/setup-node@v4
+              with:
+                node-version: 18
+            
+            - name: Install dependencies
+              run: |
+                npm install express
+                npm install --save-dev jest supertest
+              working-directory: my-express-app
+
+            - name: Run tests
+              run: |
+                npm test
+              working-directory: my-express-app
