@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000;
 
 // Define a route
 app.get('/', (req, res) => {
-  res.send('Hello ITJers!');
+  res.send('Hello ITJers and happy Friday!');
 });
 
 // Start the server
