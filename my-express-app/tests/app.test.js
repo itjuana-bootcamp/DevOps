@@ -2,9 +2,9 @@ const request = require('supertest');
 const app = require('../index');
 
 describe('GET /', () => {
-  test('It should respond with: Hello ITJers and super Happy Friday!', async () => {
+  test('It should respond with: Hello ITJers and Happy Friday!', async () => {
     const response = await request(app).get('/');
     expect(response.status).toBe(200);
-    expect(response.text).toBe('Hello ITJers and super Happy Friday!');
+    expect(response.text).toBe('Hello ITJers and Happy Friday!');
   });
 });
