@@ -3,7 +3,7 @@ name: My First PR WF
 on:
   pull_request:
       branches:
-          - main
+          - my-branch
 
 jobs:
     build_test_node_app:
