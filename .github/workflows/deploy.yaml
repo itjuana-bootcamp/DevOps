@@ -37,8 +37,11 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v2
         
-            - name: Deploy to Heroku
-              uses: akhileshns/heroku-deploy@v3.13.15 # This is the action
+            - name: Install Heroku CLI # <- IMPORTANT!!! Make sure the cli is installed before using the action
+              run: |
+                curl https://cli-assets.heroku.com/install.sh | sh
+                
+            - uses: akhileshns/heroku-deploy@v3.14.15 # This is the action
               with:
                 heroku_api_key: ${{secrets.HEROKU_API_KEY}}
                 heroku_app_name: "gh-node-app" #Must be unique in Heroku
