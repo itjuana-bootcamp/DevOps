@@ -1,0 +1,47 @@
+name: Deploy node app
+
+on:
+    push:
+        branches:
+            - swe-bp-dry
+
+jobs:
+    test_node_app:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            
+            - uses: actions/setup-node@v4
+              with:
+                node-version: 20
+            
+            - name: Install dependencies
+              run: |
+                npm install
+              working-directory: swebp-node
+
+            - name: Run tests
+              run: |
+                npm test
+              working-directory: swebp-node
+    
+    deploy_node_app:
+        needs: [test_node_app]
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+        
+            - name: Install Heroku CLI
+              run: |
+                curl https://cli-assets.heroku.com/install.sh | sh
+                
+            - uses: akhileshns/heroku-deploy@v3.14.15 # This is the action
+              with:
+                heroku_api_key: ${{ secrets.HEROKU_API_KEY_SWEBP }}
+                heroku_app_name: "swebp-node" #Must be unique in Heroku
+                heroku_email: ${{ vars.HEROKU_USERNAME_SWEBP }}
+                appdir: "swebp-node"
