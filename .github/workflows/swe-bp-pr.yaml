@@ -1,5 +1,5 @@
-# Cada pull request, corra tests
-# Si los tests pasan, se deployee a dev
+# Cada pull request, corra tests / HECHO
+# Si los tests pasan, se deployee a dev / HECHO
 
 name: CI/CD on Pull Request
 
@@ -29,4 +29,24 @@ jobs:
               run: | 
                 npm test
               working-directory: swebp-node
+
+    deploy_node_app:
+        needs: build_test_js_app
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Install Heroku CLI
+              run: |
+                curl https://cli-assets.heroku.com/install.sh | sh
+
+            - uses: akhileshns/heroku-deploy@v3.14.15 # This is the action
+              with:
+                heroku_api_key: ${{ secrets.HEROKU_API_KEY_SWEBP }}
+                heroku_app_name: "swe-bp-node" #Must be unique in Heroku
+                heroku_email: ${{ vars.HEROKU_USERNAME_SWEBP }}
+                appdir: "swebp-node"
+            
             
