@@ -1,0 +1,19 @@
+{
+  "name": "swebp-node",
+  "version": "1.0.0",
+  "description": "CI/CD",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "jest": "^29.7.0",
+    "supertest": "^7.1.0"
+  },
+  "directories": {
+    "test": "tests"
+  }
+}
