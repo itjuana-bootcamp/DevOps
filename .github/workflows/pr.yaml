@@ -29,3 +29,22 @@ jobs:
         run: |
           npm test
         working-directory: swebp-node
+  
+  deploy_node_app:
+    needs: build_test_js_app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Heroku CLI
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh
+
+      - uses: akhileshns/heroku-deploy@v3.14.15
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY_SWEBP }}
+          heroku_app_name: swebp-node
+          heroku_email: ${{ vars.HEROKU_USERNAME_SWEBP }}
+          appdir: "swebp-node"
