@@ -1,0 +1,28 @@
+name: CI/CD on Pull request
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    build_test_js_app:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+            
+            - uses: actions/setup-node@v4
+              with:
+                node-version: 20
+
+            - name: Install dependencies
+              run: |
+                npm install
+              working-directory: swe-bp
+            
+            - name: Run tests
+              run: |
+                npm test
+              working-directory: swe-bp
