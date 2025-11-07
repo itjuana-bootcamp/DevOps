@@ -1,0 +1,20 @@
+{
+  "name": "swe-bp",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4"
+  },
+  "directories":{
+    "test": "tests"
+  }
+}
