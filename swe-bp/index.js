@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000;
 
 // Definir una ruta
 app.get('/', (req, res) => {
-    res.send('Hello ITJ');
+    res.send('Hello, ITJaguars');
 })
 
 if (require.main === module) {
