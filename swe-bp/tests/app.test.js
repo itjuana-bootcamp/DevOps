@@ -2,10 +2,10 @@ const request = require('supertest');
 const app = require('../index.js');
 
 describe('GET /', () => {
-    it('should respond with Hello ITJ', async () => {
+    it('should respond with Hello, ITJaguars', async () => {
         const response = await request(app).get('/');
         expect(response.statusCode).toBe(200);
-        expect(response.text).toBe('Hello ITJ');
+        expect(response.text).toBe('Hello, ITJaguars');
     });
 });
 
