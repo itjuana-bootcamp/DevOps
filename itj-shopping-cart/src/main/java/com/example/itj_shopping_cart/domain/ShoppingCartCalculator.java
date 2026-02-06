@@ -13,7 +13,7 @@ public class ShoppingCartCalculator implements SubtotalCalculator {
         double subtotal = 0;
         for (Item item :
                 shoppingCart.getItems()) {
-            subtotal += item.getPrice() * 2;
+            subtotal += item.getPrice();
         }
 
         DiscountStrategy discountStrategy = discountProvider.getDiscountStrategy();
