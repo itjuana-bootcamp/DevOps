@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.example.itj_shopping_cart.integration.ShoppingCartServiceIntegrationTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s -- in com.example.itj_shopping_cart.integration.ShoppingCartServiceIntegrationTest
