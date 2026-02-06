@@ -1,0 +1,33 @@
+name: CI Java Pipeline
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    build_test_app:
+        runs-on: ubuntu-latest
+
+        steps: 
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - uses: actions/setup-java@v5
+              with:
+                distribution: 'temurin'
+                java-version: '21'
+                cache: maven
+            
+            - name: Build project
+              run: |
+                ./mvnw clean package -DskipTests
+              working-directory: itj-shopping-cart
+
+            - name: Run tests
+              run: |
+                ./mvnw test
+              working-directory: itj-shopping-cart
+
+
+
