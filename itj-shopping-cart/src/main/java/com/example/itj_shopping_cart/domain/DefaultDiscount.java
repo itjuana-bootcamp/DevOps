@@ -6,7 +6,7 @@ public class DefaultDiscount implements DiscountStrategy {
     public double getDiscount(double subtotal) {
         double discount = 0;
         if (subtotal > 300) {
-            discount = subtotal * 0.4;
+            discount = subtotal * 0.2;
         } else if (subtotal > 200) {
             discount = subtotal * 0.1;
         }
