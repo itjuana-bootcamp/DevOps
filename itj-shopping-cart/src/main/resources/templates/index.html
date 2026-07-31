@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ITJ Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .total {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to ITJ Shopping Cart</h1>
+
+    <div class="controls">
+        <h3>Add Items</h3>
+        <button onclick="addItem('Apple', 1.50)">Add Apple ($1.50)</button>
+        <button onclick="addItem('Banana', 0.80)">Add Banana ($0.80)</button>
+        <button onclick="addItem('Orange', 1.20)">Add Orange ($1.20)</button>
+    </div>
+
+    <h2>Your Cart</h2>
+
+    <table id="cartTable">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Items will be inserted here -->
+        </tbody>
+    </table>
+
+    <div class="total">
+        Total: <span id="totalPrice">$0.00</span>
+    </div>
+
+    <script>
+        let cartId = null;
+
+        // Initialize cart on load
+        async function initCart() {
+            try {
+                const response = await fetch('/cart', { method: 'POST' });
+                const cart = await response.json();
+                cartId = cart.id;
+                console.log('Cart created:', cartId);
+            } catch (error) {
+                console.error('Error creating cart:', error);
+            }
+        }
+
+        async function addItem(name, price) {
+            if (!cartId) {
+                console.error('Cart not initialized');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/cart/${cartId}/items`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, price })
+                });
+
+                if (response.ok) {
+                    // Update display
+                    renderItem(name, price);
+                    updateTotal();
+                }
+            } catch (error) {
+                console.error('Error adding item:', error);
+            }
+        }
+
+        function renderItem(name, price) {
+            const tbody = document.querySelector('#cartTable tbody');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${name}</td>
+                <td>$${price.toFixed(2)}</td>
+            `;
+            tbody.appendChild(row);
+        }
+
+        async function updateTotal() {
+            try {
+                const response = await fetch(`/cart/${cartId}/subtotal`);
+                const total = await response.json();
+                document.getElementById('totalPrice').textContent = `$${total.toFixed(2)}`;
+            } catch (error) {
+                console.error('Error fetching total:', error);
+            }
+        }
+
+        // Start
+        initCart();
+    </script>
+</body>
+
+</html>
