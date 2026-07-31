@@ -30,3 +30,22 @@ jobs:
         run: ./mvnw test
         working-directory: itj-shopping-cart
             
+  deploy_java_app:
+    needs: build_test_app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      
+      - name: Install Heroku CLI
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh
+      
+      - uses: akhileshns/heroku-deploy@v3.14.15
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY_SWEBP }}
+          heroku_app_name: "itj-shopping-cart"
+          heroku_email: ${{ vars.HEROKU_USERNAME_SWEBP}}
+          appdir: itj-shopping-cart
+          usedocker: true
